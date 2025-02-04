@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:30px;
+            padding:0px;
+            DISPLAY:FLEX;
+            justify-content: center;
+        }
+        #box{
+            padding:20px;
+            border:0px solid black;
+            background-color:WHITE;
+            box-shadow: 10PX 10PX 30PX SILVER;
+            margin:0px;
+            width:80vw;
+            text-align: justify;
+            text-indent: 50px;
+            
+            color:black;
+        }
+        .items{
+            width:95%;
+            margin:5px;
+            border:1px solid black;
+            padding:20px;
+            font-size: 18px;
+            font-weight: bold;
+            outline:none;
+            text-decoration: none;
+        }
+        #input{
+            height:auto;
+            border:2px solid black;
+        }
+        #error{
+            font-size: medium;
+        }
+        #result{
+            display:inline;
+            float:right;
+            width:400px;
+            height:30px;
+            margin:20px;
+            color:blue;
+        }
+        #right{
+            color:green;
+        }
+        #wrong{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+        <div id="box">
+            <h1>Typing web site</h1>
+            <div id="result" class="items">Right characters:[<span id="right">0</span>] Wrong characters:[<span id="wrong">0</span>]</div>
+            <div class="items" id="text" autocapitalize="off">Saepe eligendi debitis vel repudiandae temporibus esse pariatur id, doloribus ex molestias obcaecati quam earum nihil necessitatibus. Assumenda dignissimos, mollitia commodi quasi numquam error minus pariatur reprehenderit quos nesciunt velit ipsam omnis iure magni? Nulla architecto obcaecati sunt debitis, vero totam hic at nobis dolorum sit, saepe consectetur perspiciatis delectus corporis! Tenetur placeat voluptatem aperiam quisquam quod delectus atque velit soluta? Corrupti enim veniam, adipisci sint amet quas debitis officia ab voluptas tenetur corporis, id quo tempore ipsa asperiores culpa assumenda nihil est atque laudantium! Recusandae commodi praesentium molestiae officiis, accusantium nesciunt voluptate dicta laudantium totam. Quo natus sapiente, vero, velit nostrum amet a et quos ipsa atque ea pariatur consequatur ut. Ipsum, ducimus odit doloribus sed deleniti, fugiat totam maxime officia veniam rerum modi. Incidunt ut quidem aperiam, at sit tempora beatae nesciunt vero assumenda harum, itaque sed labore. Error corrupti hic maxime sed optio facere, voluptates in praesentium sapiente cumque quod voluptatem repudiandae voluptatibus dolore consectetur! Labore fuga ut in impedit numquam. Numquam voluptatibus tenetur iusto possimus maxime tempora libero repudiandae? Veritatis eligendi perspiciatis in adipisci nostrum ducimus architecto. Excepturi alias in illum doloremque fugiat nam, eius nobis et nisi maxime dolor exercitationem quod. Quia nisi molestiae recusandae numquam sit quos! Eveniet veritatis magni facilis dolores illo porro repudiandae saepe maiores dolorem delectus? Rem tempora eaque ipsa quo enim quibusdam placeat vel.</div>
+            <textarea class="items" id="input" spellcheck="false" placeholder="Typing ....."></textarea>
+            <p id="error">Error</p>
+        </div>
+        <script>
+            let right=0;
+            let wrong=0;
+            let x=0;
+            let error= document.getElementById("error");
+            let arrText= Array.from(document.getElementById("text").innerText);
+            console.log(arrText);
+             input.addEventListener("keyup", function(event) {
+                let input = (document.getElementById("input").value);
+               
+                console.log("array print:",input);
+                let arrInput = Array.from(input);
+                console.log(arrInput);
+                if(event.key=="Backspace"){
+                    if(x>0){
+                        x=x-1;
+                        console.log("value of -x:",x)
+                        }
+                    
+                }
+                console.log("this is my key :",event.key);
+                let key =arrText.includes(event.key);
+                if(key){
+                    console.log(event.key);
+                    console.log("value of x",x)
+                    if(arrInput[x]===arrText[x]){
+                        console.log("true");
+                        error.innerText="Right character";
+                        error.style.color="green";
+                        let inp = document.getElementById('input');
+                        inp.style.border="2px solid green";
+                        inp.style.color="green";
+                        right=right+1;
+                        document.getElementById("right").innerText=right;
+
+
+                    } else{
+                        console.log(false);
+                        error.innerText="Character are missing";
+                        error.style.color="red";
+                        let inp =document.getElementById('input');
+                        inp.style.border="2px solid red";
+                        inp.style.color="red";
+                        wrong=wrong+1;
+                        document.getElementById("wrong").innerHTML=wrong;
+                    }
+                    x=x+1;
+                } else{
+                    console.log("exit loop");
+                }
+               
+
+            })
+
+
+        </script>
+</body>
+</html>
